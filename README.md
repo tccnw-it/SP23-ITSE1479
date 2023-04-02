@@ -1,7 +1,7 @@
-# SP22-ITSE1479
-Final Project for ITSE1479-Intro to Scripting Languages - Spring 2022
+# SP23-ITSE1479
+Final Project for ITSE1479-Intro to Scripting Languages - Spring 2023
 <hr/>
-Be sure take a look at the sequence of actions that you should take to complete this lab as described in the Final Project Assignment in myTCC.
+Be sure take a look at the sequence of actions that you should take to complete this lab as described in the Final Project Assignment in Canvas.
 
 The goal is for you to 
 <ol>
