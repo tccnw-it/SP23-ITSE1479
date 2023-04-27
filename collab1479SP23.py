@@ -26,7 +26,7 @@ def main():
     #*****************************************************************
     jumpTable = {}
     jumpTable['1'] = smileyFunction       # Smiley - call to function goes here
-    jumpTable['2'] = stub                 # Becker - call to function goes here
+    jumpTable['2'] = beckerFunction       # Becker - call to function goes here
     jumpTable['3'] = stub                 # Cantu - call to function goes here
     jumpTable['4'] = stub                 # Delgado - call to function goes here
     jumpTable['5'] = stub                 # Garcia Tadeo - call to function goes here
@@ -99,13 +99,41 @@ def showMenu():
 # DESCRIPTION:      stub function created to print a single message: Not Implemented Yet
 # OUTPUT EXAMPLE:   User enters any jumpTable entry that has not been created yet
 # *****************************************************************************************
+def beckerFunction():
+    totalPoints = 0
+    numGrades = 0
+    letterGrade = "Undefined"
+
+    print("\nPlease enter grades you would like to have averaged.")
+    grade = input ("\nEnter grades(0-100) one at a time (hit enter to submit). Enter \"Q\"  when you have entered all grades you wish to enter.")
+    while grade != "Q":
+        if int(grade) >= 0 and int(grade) <= 100:
+            totalPoints += int(grade)
+            numGrades += 1
+            if int(grade) >= 90 and int(grade) <= 100: letterGrade = "A"
+            elif int(grade) >= 80 and int(grade) <= 89: letterGrade = "B"
+            elif int(grade) >= 70 and int(grade) <= 79: letterGrade = "C"
+            elif int(grade) >= 60 and int(grade) <= 69: letterGrade = "D"
+            elif int(grade) < 60: letterGrade = "F"
+            print ("A(n) " + grade + " is a(n) " + letterGrade + ".")
+            grade = input ("Please enter a grade between zero and 100. Type \"Q\" when you have entered all grades.")
+        else:
+            grade = input("There was an error. \"Please enter a grade between zero and 100. ")
+    if numGrades > 0:
+        print ("\nThank you. The average of all entered grades, excluding errors was: " + str(round(totalPoints/numGrades)))
+    else:
+        print ("\nYou did not entered any grades. No average available." )
+
+    print("\nPress ENTER to continue.")
+    input()   
+
 def stub():
     print()
     print()
 
-    print("Not implemented at this time.  Check back later.")
+    
     print("Press ENTER to continue.")
-    input()    
+    input()   
 
 # *****************************************************************************************
 # FUNCTION:         smileyFunction
