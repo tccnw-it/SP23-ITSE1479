@@ -95,9 +95,21 @@ def showMenu():
 # *****************************************************************************************
 
 # *****************************************************************************************
-# FUNCTION:         stub (default for menu)
-# DESCRIPTION:      stub function created to print a single message: Not Implemented Yet
-# OUTPUT EXAMPLE:   User enters any jumpTable entry that has not been created yet
+# FUNCTION:         beckerFunction 
+# DESCRIPTION:      Prints letter grade corresponding to user input numeric grades, keeps track of running total, prints out grade average at conclusion of program run.
+# OUTPUT EXAMPLE:   With user entry of the following grades: 56, 89, 78, resulting output follows:
+#
+#Please enter grades you would like to have averaged.
+#
+#Enter grades(0-100) one at a time (hit enter to submit). Enter "Q"  when you have entered all grades you wish to enter.56
+#A(n) 56 is a(n) F.
+#Please enter a grade between zero and 100. Type "Q" when you have entered all grades.89
+#A(n) 89 is a(n) B.
+#Please enter a grade between zero and 100. Type "Q" when you have entered all grades.78
+#A(n) 78 is a(n) C.
+#Please enter a grade between zero and 100. Type "Q" when you have entered all grades.Q
+#
+#Thank you. The average of all entered grades, excluding errors was: 74
 # *****************************************************************************************
 def beckerFunction():
     totalPoints = 0
@@ -131,7 +143,7 @@ def stub():
     print()
     print()
 
-    
+    print("Not implemented at this time.  Check back later.")
     print("Press ENTER to continue.")
     input()   
 
