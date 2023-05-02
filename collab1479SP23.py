@@ -29,7 +29,7 @@ def main():
     jumpTable['2'] = stub                 # Becker - call to function goes here
     jumpTable['3'] = stub                 # Cantu - call to function goes here
     jumpTable['4'] = stub                 # Delgado - call to function goes here
-    jumpTable['5'] = stub                 # Garcia Tadeo - call to function goes here
+    jumpTable['5'] = jannettFunction      # Garcia Tadeo - call to function goes here
     jumpTable['6'] = stub                 # Gloria - call to function goes here
     jumpTable['7'] = stub                 # Menifee - call to function goes here
     jumpTable['8'] = stub                 # Rountree - call to function goes here
@@ -93,19 +93,41 @@ def showMenu():
 #  
 # FunctionName:  lastnameFunction(your parameters)
 # *****************************************************************************************
+import time
+
+def timer(input_time):
+   
+   minutes, seconds = divmod(input_time, 60)
+   initial_time = '{:02d}:{:02d}'.format(minutes, seconds)
+      
+   while input_time >= 0:
+       minutes, seconds = divmod(input_time, 60)
+       timer = '{:02d}:{:02d}'.format(minutes, seconds)
+       print(timer, end='\r')
+       input_time = input_time - 1
+       time.sleep(1)
+   print()
+   print()
+   print("Congrats! You've wasted", initial_time,":)")
+
+
+def jannettFunction():
+   input_time = int(input("Enter a time to countdown in seconds: "))
+   timer(input_time)
 
 # *****************************************************************************************
 # FUNCTION:         stub (default for menu)
 # DESCRIPTION:      stub function created to print a single message: Not Implemented Yet
 # OUTPUT EXAMPLE:   User enters any jumpTable entry that has not been created yet
 # *****************************************************************************************
+
 def stub():
     print()
     print()
 
     print("Not implemented at this time.  Check back later.")
     print("Press ENTER to continue.")
-    input()    
+    input()      
 
 # *****************************************************************************************
 # FUNCTION:         smileyFunction
