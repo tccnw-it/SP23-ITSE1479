@@ -34,7 +34,7 @@ def main():
     jumpTable['7'] = stub                 # Menifee - call to function goes here
     jumpTable['8'] = stub                 # Rountree - call to function goes here
     jumpTable['9'] = stub                 # Stewart - call to function goes here
-    jumpTable['10'] = stub                # Sylvester - call to function goes here
+    jumpTable['10'] = sylvesterFunction                # Sylvester - call to function goes here
 
     chrChoice = ""      # To hold a menu choice
 
@@ -105,7 +105,131 @@ def stub():
 
     print("Not implemented at this time.  Check back later.")
     print("Press ENTER to continue.")
-    input()    
+    input()
+
+# *****************************************************************************************
+# FUNCTION:         sylvesterFunction
+# DESCRIPTION:      Lets the user play a game of pigdice that is absolutely not rigged at all.
+# OUTPUT EXAMPLE:   User agrees to roll the dice by entering 'y'
+#                   Program outputs the following:
+#                        You rolled a 3!
+#
+#                        Your Score = 3
+#                        Do you want to roll again? (y/n):
+# *****************************************************************************************
+
+def sylvesterFunction():
+    from random import randint           
+    ###############FUNCTION STARTS HERE#####################
+    playerTotal = 0
+    cpuTotal = 0
+    winningValue = 100 #You can use this to determine how long a game is.
+    rigValue = 10 #This is how biased it is against the player. The higher the number, the harder the game.
+    validInput = ["Y","N"]
+    print("Welcome to rigdice!")
+    print("Where nothing is suspicious at all!")
+    print("First player to reach " + str(winningValue) + " in score wins!")
+    print("Be careful! If you roll a 1, your score resets!")
+    #####INTRO ENDS HERE#####
+
+    ####KEY LOOP####
+    while (cpuTotal < winningValue and playerTotal < winningValue): #Checks to see if a victory has been reached.
+            
+        ####PLAYER'S TURN####
+        playerTries = input("Do you want to roll? (y/n):")
+        while(playerTries.upper() not in validInput):
+            print("Invalid input! Enter 'Y' to roll or 'N' to pass!")
+            playerTries = input("Do you want to roll? (y/n):")
+        
+        while(playerTries.upper() == 'Y'):
+            if playerTotal >= winningValue-rigValue: #Check if the player is close to winning.
+                
+                #There is now a 1 in 3 chance of losing it all instead of 1 in 6
+                riskChance = randint(1,3)
+                if riskChance == 1: #The roll is totally rigged at this point.
+                    total = 1
+                    print("You rolled a " + str(total) + "!\n")
+                    playerTotal = 0
+                        
+                    #Taunt the player for "encouragement"
+                    tauntText = ["So close!\n", "Maybe next time.\n", "Almost had it...\n", "You'll get it next time!\n","Maybe one more...\n"]
+                    print("You have lost all your points!")
+                    print(tauntText[randint(0,4)])
+                    break
+                
+                        ##They passed the test but at this point you can't "roll" higher than a 2.
+                else:
+                    total = 2
+                    print("You rolled a " + str(total) + "!\n")
+                    playerTotal = playerTotal + total
+                    
+                    if playerTotal >= winningValue:
+                        #Check if they've finally won
+                        print("Your Score = " + str(playerTotal))
+                        print("You win!")
+                        break
+                    
+                    else: 
+                        print("Your Score = " + str(playerTotal))
+                    playerTries = input("Do you want to roll again? (y/n):")
+                    
+                #The player isn't close to winning yet so play as normal.
+            else:
+                total = randint(1,6)
+                print("You rolled a " + str(total) + "!\n")
+                playerTotal = playerTotal + total #Add what they rolled to their total.
+                if playerTotal >= winningValue:
+                    #Check if they've finally won
+                    print("Your Score = " + str(playerTotal))
+                    print("You win!")
+                    break
+                                
+                elif total == 1: #If the dice lands on 1, wipe points.
+                    playerTotal = 0
+                    print("You have lost all your points! \n")
+                    break
+                
+                else: 
+                    print("Your Score = " + str(playerTotal))
+                    playerTries = input("Do you want to roll again? (y/n):")
+                    
+            while(playerTries.upper() not in validInput):
+                print("Invalid input! Enter 'Y' to roll or 'N' to pass!")
+                playerTries = input("Do you want to roll? (y/n):")
+            
+                
+                            
+        ####CPU'S TURN####
+        if playerTotal < winningValue:
+            """Rolls randomly for the cpu when it is the cpu's turn. The CPU has no cheeky bias"""
+            cpuTries = randint(1, 10) #The CPU could roll anywhere between 1 to 10 times.
+            print("\nComputer is going to roll " + str(cpuTries) +" times.")
+            while(cpuTries > 0):
+                cpuTries = cpuTries - 1
+                total = randint(1,6)
+                print("CPU has rolled a " + str(total) + "!")
+                cpuTotal = cpuTotal + total
+                if cpuTotal >= winningValue:
+                    print("Computer Score = " + str(cpuTotal))
+                    print("The computer wins!")
+                    cpuTries = 0
+                    break
+                        
+                elif total == 1: #If the dice lands on 1, oops it's your turn!
+                    cpuTotal = 0
+                    print("The computer has lost all its points!")
+                    cpuTries = 0
+                    
+                else: 
+                    print("Computer Score = " + str(cpuTotal))
+            if cpuTotal < winningValue:
+                print("Your turn!\n")
+            ####CPU TURN ENDS####    
+                
+    print("Game over!")
+    playerTotal = 0
+    cpuTotal = 0
+####FUNCTION ENDS HERE#####
 
 # *****************************************************************************************
 # FUNCTION:         smileyFunction
@@ -154,3 +278,4 @@ def smileyFib(numberOfTimes):
 #       main()
 #*****************************************************************
 main()
+
