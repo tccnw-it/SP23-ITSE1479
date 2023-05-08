@@ -1,6 +1,8 @@
 # Menu program for Programming Final Project
 # Used with Github to ensure that students know the GitHub process.
 
+from random import randint
+
 semester = "ITSE1479 - Spring 2023";
 
 def main():
@@ -32,7 +34,7 @@ def main():
     jumpTable['5'] = stub                 # Garcia Tadeo - call to function goes here
     jumpTable['6'] = stub                 # Gloria - call to function goes here
     jumpTable['7'] = stub                 # Menifee - call to function goes here
-    jumpTable['8'] = stub                 # Rountree - call to function goes here
+    jumpTable['8'] = numGuessGame         # Rountree - call to function goes here
     jumpTable['9'] = stub                 # Stewart - call to function goes here
     jumpTable['10'] = stub                # Sylvester - call to function goes here
 
@@ -147,6 +149,52 @@ def smileyFib(numberOfTimes):
 
     print()
     print()
+
+#*************************************************
+# Derek Rountree -- Number Guessing Game
+# Player has 10 chances to pick a number between
+# 1 and 100, each guess the computer reports
+# whether their guess was too high or too low.
+#*************************************************
+def numGuessGame():
+    numGuessCount = 1
+    numGuessRandomInt = randint(1,100) 
+    print()
+    print("*" * 30)
+    print("Try and guess a number between 1-100.")
+    print("-You have 10 chances to guess correctly")
+    print("-After each chance the computer will tell you whether your guess was too high or too low")
+    print()
+
+    while(numGuessCount <= 10):
+        numGameChoice = input(f"Guess #{numGuessCount}: ")
+        while not(numGameChoice.isdigit()):
+            print("That is not a number, please enter a number 1-100.")
+            numGameChoice = input(f"Guess #{numGuessCount}: ")
+        numGameChoice = int(numGameChoice)
+        if (numGameChoice > numGuessRandomInt):
+            print("Too High")
+            print()
+        elif (numGameChoice < numGuessRandomInt):
+            print("Too Low")
+            print()
+        elif (numGameChoice == numGuessRandomInt):
+            print(numGuessRandomInt, "is right! You got it!")
+            print()
+            break
+        numGuessCount += 1
+        if(numGuessCount == 11):
+            print("Sorry, you're out of chances :(")
+            print()
+    numGameAgain = input("Would you like to play again?\n--Press y to play again\n--Press m to go back to the main menu: ").lower()
+    if(numGameAgain == "y"):
+        numGuessGame()
+    elif(numGameAgain == "m"):
+        return
+    else:
+        print("Not a valid selection, returning to main menu.")
+        return    
+
 
 #*****************************************************************
 # Please leave me alone,
