@@ -34,7 +34,7 @@ def main():
     jumpTable['5'] = stub                 # Garcia Tadeo - call to function goes here
     jumpTable['6'] = stub                 # Gloria - call to function goes here
     jumpTable['7'] = stub                 # Menifee - call to function goes here
-    jumpTable['8'] = numGuessGame         # Rountree - call to function goes here
+    jumpTable['8'] = rountreeFunction     # Rountree - call to function goes here
     jumpTable['9'] = stub                 # Stewart - call to function goes here
     jumpTable['10'] = stub                # Sylvester - call to function goes here
 
@@ -156,7 +156,7 @@ def smileyFib(numberOfTimes):
 # 1 and 100, each guess the computer reports
 # whether their guess was too high or too low.
 #*************************************************
-def numGuessGame():
+def rountreeFunction():
     numGuessCount = 1
     numGuessRandomInt = randint(1,100) 
     print()
@@ -188,7 +188,7 @@ def numGuessGame():
             print()
     numGameAgain = input("Would you like to play again?\n--Press y to play again\n--Press m to go back to the main menu: ").lower()
     if(numGameAgain == "y"):
-        numGuessGame()
+        rountreeFunction()
     elif(numGameAgain == "m"):
         return
     else:
