@@ -33,7 +33,7 @@ def main():
     jumpTable['6'] = stub                 # Gloria - call to function goes here
     jumpTable['7'] = stub                 # Menifee - call to function goes here
     jumpTable['8'] = stub                 # Rountree - call to function goes here
-    jumpTable['9'] = stub                 # Stewart - call to function goes here
+    jumpTable['9'] = stewartFunction      # Stewart - call to function goes here
     jumpTable['10'] = stub                # Sylvester - call to function goes here
 
     chrChoice = ""      # To hold a menu choice
@@ -91,21 +91,47 @@ def showMenu():
 # *****************************************************************************************
 # Add your function below.  
 #  
-# FunctionName:  lastnameFunction(your parameters)
+# FunctionName:  stewartFunction
 # *****************************************************************************************
 
 # *****************************************************************************************
-# FUNCTION:         stub (default for menu)
-# DESCRIPTION:      stub function created to print a single message: Not Implemented Yet
-# OUTPUT EXAMPLE:   User enters any jumpTable entry that has not been created yet
+# FUNCTION:         stewartFunction 
+# DESCRIPTION:      A function that creates a password based on the user's last name, 
+#                   birth city, and phone number as input.
+#                   It then prints out a concatenation of the last 4 letters of the 
+#                   last name reversed, a special character based on the first letter of the birth city, 
+#                   and the sum of all the numbers of the phone number divided by 
+#                   7 and multiplied by 63. 
+# OUTPUT EXAMPLE:   Stewart, Fort Worth, and 8172368151 would turn into traw;735513133590
 # *****************************************************************************************
-def stub():
-    print()
-    print()
+def stewartFunction():
+    print("*" * 30)
+    print("* Strong Password Generator")
+    print("*" * 30)
 
-    print("Not implemented at this time.  Check back later.")
-    print("Press ENTER to continue.")
-    input()    
+    print("Enter the following information")
+    print("_" * 20)
+    lName = input("Last name:")
+    bCity = input("Birth city:")
+    pNum = input("Phone number (numbers only):")
+    newP = 0
+
+    bCity = bCity.lower()
+    if (bCity[:1] =='a' or bCity[:1] =='e' or bCity[:1] =='i' or bCity[:1] =='o' or bCity[:1] =='u'):
+        newCity = ":"
+    elif (bCity[:1] < "n"):
+        newCity = ";"
+    elif (bCity[:1] >= "n"):
+        newCity = "!"
+
+    for i in range (10):
+        newP += int(pNum[i])
+
+    newP = (newP / 7) * 63
+
+    print("Your strong password is: {l}{b}{p}".format(l = lName[:-5:-1], b = newCity, p = int(newP)))
+    print("Program complete.")
+
 
 # *****************************************************************************************
 # FUNCTION:         smileyFunction
