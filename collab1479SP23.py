@@ -31,7 +31,7 @@ def main():
     jumpTable['4'] = stub                 # Delgado - call to function goes here
     jumpTable['5'] = stub                 # Garcia Tadeo - call to function goes here
     jumpTable['6'] = stub                 # Gloria - call to function goes here
-    jumpTable['7'] = stub                 # Menifee - call to function goes here
+    jumpTable['7'] = menifeeFunction              # Menifee - call to function goes here
     jumpTable['8'] = stub                 # Rountree - call to function goes here
     jumpTable['9'] = stub                 # Stewart - call to function goes here
     jumpTable['10'] = stub                # Sylvester - call to function goes here
@@ -147,6 +147,42 @@ def smileyFib(numberOfTimes):
 
     print()
     print()
+
+def menifeeFunction():
+    menifeeStrongPword()
+    print()
+
+def menifeeStrongPword():
+    print("*" * 40)
+    print("* Strong Password Program")
+    print("*" * 40)
+
+
+    last_name = input("Enter your last name: ") # Get user input
+    birth_city = input("Enter the city where you were born: ")
+    phone_number = input("Enter your phone number (numbers only): ")
+
+
+    reversed_last_name = last_name[::-1][:4] # Reverse last name and save first 4 letters
+
+
+    if birth_city[0] in ['A', 'E', 'I', 'O', 'U']: # Determine city code based on birth city first letter
+        city_code = ':'
+    elif birth_city[0] in 'ABCDEFGHIJKLM':
+        city_code = ';'
+    else:
+        city_code = '!'
+
+
+    password_number = sum(int(digit) for digit in phone_number)
+    password_number = (password_number // 7) * 63 # Calculate password number based on phone number by rounding down the division of 7
+
+    # Concatenate saved elements to create password
+    password = reversed_last_name + city_code + str(password_number)
+
+    # Print password
+    print("Your strong password is:", password + "\n Program Complete.")
+
 
 #*****************************************************************
 # Please leave me alone,
