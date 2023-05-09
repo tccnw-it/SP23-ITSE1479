@@ -151,6 +151,7 @@ def smileyFib(numberOfTimes):
 def menifeeFunction():
     menifeeStrongPword()
     print()
+    
 
 def menifeeStrongPword():
     print("*" * 40)
