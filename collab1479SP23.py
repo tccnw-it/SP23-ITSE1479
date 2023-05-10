@@ -28,7 +28,7 @@ def main():
     jumpTable['1'] = smileyFunction       # Smiley - call to function goes here
     jumpTable['2'] = stub                 # Becker - call to function goes here
     jumpTable['3'] = stub                 # Cantu - call to function goes here
-    jumpTable['4'] = stub                 # Delgado - call to function goes here
+    jumpTable['4'] = delgadoFunction                 # Delgado - call to function goes here
     jumpTable['5'] = stub                 # Garcia Tadeo - call to function goes here
     jumpTable['6'] = stub                 # Gloria - call to function goes here
     jumpTable['7'] = stub                 # Menifee - call to function goes here
@@ -93,7 +93,44 @@ def showMenu():
 #  
 # FunctionName:  lastnameFunction(your parameters)
 # *****************************************************************************************
+def delgadoFunction():
+    delgadoPassword()
+    print()
+    print("Press ENTER to return to the menu")
+    input()
+def delgadoPassword():
+    lastName = input("Please enter your last name")
+    birthCity = input("Please enter your birth city")
+    phoneNumber = input("Please enter your phone number, numbers only and no dashes: ")
 
+    reversedLastName = lastName[::-1][:4]
+
+    #will determine what to use from city of birth 
+    if birthCity[0].lower() in "aeiou":
+        cityChar = ":"
+    elif birthCity[0].lower() in "abcdefghijklm":
+        cityChar = ";"
+    else:
+        cityChar = "!"
+
+    #Making paswword from phone number  
+    phoneSum = sum(int(num) for num in phoneNumber)
+
+    passwordNum = ((phoneSum/7) * 63)
+
+    #combining all components 
+    password = f"{reversedLastName}{cityChar}{int(passwordNum)}"
+
+    print("***********************************")
+    print("* Strong Password Program")
+    print("***********************************\n")
+    print("Enter the following information")
+    print("-------------------------------")
+    print("Last Name: ", lastName)
+    print("Birth City: ", birthCity)
+    print("Phone Number (number only): ", phoneNumber)
+    print()
+    print(f"Your strong password is: {str(password)}")
 # *****************************************************************************************
 # FUNCTION:         stub (default for menu)
 # DESCRIPTION:      stub function created to print a single message: Not Implemented Yet
