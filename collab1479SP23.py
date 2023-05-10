@@ -28,7 +28,7 @@ def main():
     jumpTable['1'] = smileyFunction       # Smiley - call to function goes here
     jumpTable['2'] = stub                 # Becker - call to function goes here
     jumpTable['3'] = stub                 # Cantu - call to function goes here
-    jumpTable['4'] = stub                 # Delgado - call to function goes here
+    jumpTable['4'] = delgadoFunction                 # Delgado - call to function goes here
     jumpTable['5'] = stub                 # Garcia Tadeo - call to function goes here
     jumpTable['6'] = stub                 # Gloria - call to function goes here
     jumpTable['7'] = stub                 # Menifee - call to function goes here
@@ -93,7 +93,43 @@ def showMenu():
 #  
 # FunctionName:  lastnameFunction(your parameters)
 # *****************************************************************************************
+def delgadoFunction():
+    delgadoRPS()
+    print()
+    print("Press ENTER to return to the menu")
+    input()
+def delgadoRPS():
+    import random 
 
+    wins = 0
+    losses = 0
+    ties = 0
+
+    while True:
+        print()
+        print("What will you throw? rock, paper or scissors? Type 'quit' to exit game:")
+        user_input = input().lower()
+        if user_input == 'quit':
+            break
+        #default throw from computer 
+        default_choice = random.choice(['rock', 'paper', 'scissors'])
+
+        print(f"You chose {user_input}, and the computer chose {default_choice}")
+        #determining wwhere does user win, loose and tie 
+        if user_input == default_choice:
+            print("It's a tie")
+            ties = ties + 1
+        elif (user_input == 'rock' and default_choice == 'scissors') or \
+            (user_input == 'paper' and default_choice == 'rock') or \
+            (user_input == 'scissors' and default_choice == 'paper'):
+            print ("You win")
+            wins = wins + 1
+        else:
+            print("The computer wins")
+            losses = losses + 1
+    print()
+    print(f"The final results are: {wins} wins, {losses} losses, {ties} ties.")
+        
 # *****************************************************************************************
 # FUNCTION:         stub (default for menu)
 # DESCRIPTION:      stub function created to print a single message: Not Implemented Yet
